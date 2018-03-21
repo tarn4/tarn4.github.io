@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="tarn4">
 <meta property="og:description" content="使用pytesseract模块识别验证码">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-21T16:30:27.649Z">
+<meta property="og:updated_time" content="2018-03-21T16:32:42.552Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python识别验证码">
 <meta name="twitter:description" content="使用pytesseract模块识别验证码">
@@ -335,7 +335,7 @@
 <h3 id="使用pytesseract模块识别验证码"><a href="#使用pytesseract模块识别验证码" class="headerlink" title="使用pytesseract模块识别验证码"></a>使用pytesseract模块识别验证码</h3><ul>
 <li>报错解决：将pytesseract.py中  </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tesseract_cmd = \&apos;tesseract\&apos;</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">改为绝对路径</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tesseract_cmd = &apos;tesseract&apos;</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">- 改为绝对路径</span><br></pre></td></tr></table></figure>
 <p>tesseract_cmd = ‘C:/Program Files (x86)/Tesseract-OCR/tesseract.exe’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 依赖tesseract的模块，需安装tesseract.</span><br><span class="line">- pytesseract和tesseract的准确度根据实际情况而定</span><br></pre></td></tr></table></figure></p>
 <p>tesseract.exe yzm.png output -l eng<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">可以在当前目录生成output.txt文件为验证码输出</span><br><span class="line"></span><br><span class="line">pytesseract使用方法</span><br></pre></td></tr></table></figure></p>
 <p>import pytesseract</p>
