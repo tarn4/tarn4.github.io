@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="cwcms识别cwcms的简单验证码，并登录后台，下载含有数据库密码的网页  使用session方法，使得下载图片的session和登录使用的session一致    下载验证码图片后，使用tesseract.exe识别图片验证码，然后登录 1234567891011121314151617181920212223242526272829303132333435363738394041import">
+<meta name="description" content="使用pytesseract模块识别验证码">
 <meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python识别验证码">
 <meta property="og:url" content="http://yoursite.com/2018/03/01/python识别验证码/index.html">
 <meta property="og:site_name" content="tarn4">
-<meta property="og:description" content="cwcms识别cwcms的简单验证码，并登录后台，下载含有数据库密码的网页  使用session方法，使得下载图片的session和登录使用的session一致    下载验证码图片后，使用tesseract.exe识别图片验证码，然后登录 1234567891011121314151617181920212223242526272829303132333435363738394041import">
+<meta property="og:description" content="使用pytesseract模块识别验证码">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-21T16:08:49.414Z">
+<meta property="og:updated_time" content="2018-03-21T16:30:27.649Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python识别验证码">
-<meta name="twitter:description" content="cwcms识别cwcms的简单验证码，并登录后台，下载含有数据库密码的网页  使用session方法，使得下载图片的session和登录使用的session一致    下载验证码图片后，使用tesseract.exe识别图片验证码，然后登录 1234567891011121314151617181920212223242526272829303132333435363738394041import">
+<meta name="twitter:description" content="使用pytesseract模块识别验证码">
 
 
 
@@ -322,7 +322,9 @@
       
 
       
-        <h3 id="cwcms"><a href="#cwcms" class="headerlink" title="cwcms"></a>cwcms</h3><p><strong>识别cwcms的简单验证码，并登录后台，下载含有数据库密码的网页</strong></p>
+        <p>使用pytesseract模块识别验证码</p>
+<a id="more"></a>
+<h3 id="cwcms"><a href="#cwcms" class="headerlink" title="cwcms"></a>cwcms</h3><p><strong>识别cwcms的简单验证码，并登录后台，下载含有数据库密码的网页</strong></p>
 <ul>
 <li><p>使用session方法，使得下载图片的session和登录使用的session一致  </p>
 </li>
@@ -333,7 +335,7 @@
 <h3 id="使用pytesseract模块识别验证码"><a href="#使用pytesseract模块识别验证码" class="headerlink" title="使用pytesseract模块识别验证码"></a>使用pytesseract模块识别验证码</h3><ul>
 <li>报错解决：将pytesseract.py中  </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tesseract_cmd = &apos;tesseract&apos; </span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">改为绝对路径</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tesseract_cmd = \&apos;tesseract\&apos;</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">改为绝对路径</span><br></pre></td></tr></table></figure>
 <p>tesseract_cmd = ‘C:/Program Files (x86)/Tesseract-OCR/tesseract.exe’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 依赖tesseract的模块，需安装tesseract.</span><br><span class="line">- pytesseract和tesseract的准确度根据实际情况而定</span><br></pre></td></tr></table></figure></p>
 <p>tesseract.exe yzm.png output -l eng<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">可以在当前目录生成output.txt文件为验证码输出</span><br><span class="line"></span><br><span class="line">pytesseract使用方法</span><br></pre></td></tr></table></figure></p>
 <p>import pytesseract</p>
